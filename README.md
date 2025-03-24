@@ -1,4 +1,4 @@
-# MotionBase-0: The First Scaling Motion Generation Model with Million-level Motion Benchmark
+# MotionBase-0: Scaling Motion Generation Model with  Million-level Motion Benchmark
 
 <div align="center">
 
