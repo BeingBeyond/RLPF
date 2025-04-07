@@ -296,7 +296,8 @@
                     To address this gap, we present MotionLib, the first million-level dataset for motion generation, which is at least 15&times; larger than existing counterparts and enriched with hierarchical text descriptions.
                     Using MotionLib, we train a large motion model named <span class="method" style="font-weight: bold; color:cornflowerblue;">Being-M-0</span>, demonstrating robust performance across a wide range of human activities, including unseen ones.
                     Through systematic investigation, for the first time, we highlight the importance of scaling both data and model size for advancing motion generation, along with key insights to achieve this goal.
-                    To better integrate the motion modality, we propose MotionBook, an innovative motion encoding approach including (1) a compact yet lossless feature to represent motions; (2) a novel 2D lookup-free motion tokenizer that preserves fine-grained motion details while expanding codebook capacity, significantly enhancing the representational power of motion tokens.
+                    To better integrate the motion modality, we propose MotionBook, an innovative motion encoding approach including (1) a compact yet lossless feature to represent motions; (2) a novel 2D lookup-free motion tokenizer 
+                    that preserves fine-grained motion details while expanding codebook capacity, significantly enhancing the representational power of motion tokens.
                     We believe this work lays the groundwork for developing more versatile and powerful motion generation models in the future.
                   </p>
               </div>
@@ -310,39 +311,41 @@
   <div class="container">
       <div class="columns is-centered has-text-centered">
       <div class="column one-three-thirds">
-          <h2 class="title is-3 is-size-4-mobile" style="text-align: center;">Being-M-0</h2>
-          <img src="./images/motion.png" height="100%">
+          <h2 class="title is-3 is-size-4-mobile" style="text-align: center;">MotionLib</h2>
+          <img src="./images/motionlib.png" height="100%">
           <br><br>
           <h2>
               <div class="content has-text-justified">
-              <span style="font-weight: bold;">[Overview]</span> This work introduce, <span style="font-weight: bold;color:cornflowerblue;">MotionBase-0</span>, 
-                    which comprises three key components: 
-                  <ul>
-                      <li> <b>Dataset: </b> the first large-scale motion generation benchmark containing over one million motions with detailed
-                        textual descriptions, significantly advancing the capability to effectively train motion generation
-                        models;</li>
-                      <li> <b>Key Insights: </b> Our research identifies critical factors affecting the effectiveness of large
-                        motion models, emphasizing the importance of scaling both data and model size. Additionally, we
-                        uncover limitations in the current evaluation metrics, particularly when handling diverse and unseen
-                        motions;</li>
-                      <li> <b>Novel Motion Quantization</b> We propose a novel motion quantization approach that
-                        represents motion clips as 2D images and constructs a finite-scale codebook without requiring token
-                        lookups. This method retains essential information and expands the capacity of the motion encoder,
-                        enhancing the ability of large motion models to leverage large-scale motion data.</li>
-                  </ul>
-     
+              <span style="font-weight: bold;">["Can scaling the large motion model and data benefit motion generation?"]</span> To answer this question, we develop a systematic data collection pipeline to build <span style="font-weight: bold;color:cornflowerblue;">MotionLib</span>, the first large-scale dataset containing over 1.2M motion sequences -- at least 15&times; larger than current counterparts. 
+              This initiative provides a solid foundation for building robust, universally applicable motion models and offers a comprehensive testbed for future research.
+              Using MotionLib, we conduct a comprehensive investigation into the large motion model.
+              For the first time, we show the scaling law of both data and model size in motion generation, which significantly reduces joint prediction errors while improving generalization to novel motions.
               </div> 
           </h2>
-          <br><br><br>
-          <img src="./images/model.png">
+          <br><br>
+          <img src="./images/motionlib_table.png" height="100%">
           <br><br>
           <h2>
               <div class="content has-text-justified">
-              <span style="font-weight: bold;">[Scaling Law of Motion Generation]</span> 
-              In this paper, we investigate whether large motion models can serve as a promising direction for motion generation.
-              Our key finding is that scaling both data and model size substantially reduces joint prediction errors on critical metrics while enhancing generalization to novel motions. 
-              Beyond these factors, we identify inadequate motion representation as a fundamental constraint on large motion models. 
-              To overcome this limitation, we propose representing motion clips as single-channel 2D images and introduce 2D-LFQ, a novel motion quantization method.
+              <span style="font-weight: bold;">[Comparison with existing human motion datasets]</span> In the table, B, H, and F refer to body, hand, and face, respectively. 
+              "hier" indicates that the text captions include hierarchical descriptions of motions, while "body" means the descriptions are not as detailed. 
+              "multi" and "single" specify whether the dataset contains multi-person scenarios or only single-person data. 
+              As the largest motion generation dataset and benchmark to date, MotionLib features at least 15&times; more motion and text data than previous datasets, along with additional modalities.
+              </div>
+          </h2>
+          <br><br>
+          <img src="./images/motionlib_dist.png" height="100%">
+          <br><br>
+          <h2>
+              <div class="content has-text-justified">
+              <span style="font-weight: bold;">[Data Distribution]</span> MotionLib comprises over 1.2 million motion sequences collected from various public datasets and web
+              videos. A significant portion of MotionLib is derived from open-source, human-related datasets, such as 698.5K motions
+              from Kinetics-700 and 137.5K motions from NTU-RGBD-120. Additionally, MotionLib
+              integrates motions from other established datasets, including BEDLAM and GTA-Human. MotionLib also includes subsets
+              of the Motion-X collection, covering a diverse range of categories such as Animation, Perform, Dance, AIST, Kungfu,
+              GRAB, Music, Idea400, HAA500, Game Motion, and Fitness. It is worth noting
+              that the Motion-X subsets constitute only a small portion of the overall MotionLib dataset (around 6.7%). The left figure illustrates
+              the scale distribution of motion sequences within the subsets of MotionLib, while the right figure shows the average frame number of each subset.
               </div>
           </h2>
       </div>
@@ -350,6 +353,121 @@
   </div>
 </section>
 
+
+<section class="section">
+  <div class="container">
+      <div class="columns is-centered has-text-centered">
+      <div class="column one-three-thirds">
+          <h2 class="title is-3 is-size-4-mobile" style="text-align: center;">Being-M-0</h2>
+          <img src="./images/Being-M-0.png" height="100%">
+          <br><br>
+          <h2>
+              <div class="content has-text-justified">
+              <span style="font-weight: bold;">[Being-M-0]</span> Using MotionLib, we train a large motion model named Being-M-0, demonstrating robust performance across a wide range of human activities, including unseen ones.
+              To better integrate the motion modality, we propose MotionBook, an innovative motion encoding approach including (1) a compact yet lossless feature to represent motions; (2) a novel 2D lookup-free motion tokenizer 
+              that preserves fine-grained motion details while expanding codebook capacity, significantly enhancing the representational power of motion tokens. The training of Being-M-0 can be divided into two stages. 
+              In the first stage, we pre-train a motion VQ-VAE to quantify motion sequences into tokens. In the second stage, we fine-tune an autoregressive language model to predict motion tokens. 
+              </div> 
+          </h2>
+          <br><br>
+          <img src="./images/Being-M-0_table.png" width="40%">
+          <br><br>
+          <h2>
+              <div class="content has-text-justified">
+              <span style="font-weight: bold;">[SOTA performance]</span> We evaluate our model on the widely adopted HumanML3D benchmark.
+              We compare its performance against a variety of SoTA approaches.
+              Being-M-0, which utilizes LLaMA2-13B as the motion decoder, achieves SOTA performance and 
+              significantly outperforms other LLM-based methods such as AvatarGPT and the latest MotionGPT-v2. 
+              In particular, we observe substantial improvements in key metrics such as R@1, R@3, and MMDist, highlighting our model's ability to generate 
+              motion sequences that are better aligned with text descriptions and of higher quality.
+              </div>
+          </h2>
+          <br><br><br>
+          <img src="./images/Being-M-0_t2m.png" width="55%">
+          <br><br>
+          <h2>
+              <div class="content has-text-justified">
+              <span style="font-weight: bold;">[Text2Motion examples]</span> We visualize the human motions generated by Being-M-0 trained on
+              the MotionLib dataset. The visualized motion sequences demonstrate that our model can produce motion sequences that
+              closely align with the input texts, highlighting the effectiveness of MotionLib as a training resource.
+              </div>
+          </h2>
+      </div>
+      </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="column is-three-thirds">
+    <h2 class="title is-3 is-size-4-mobile" style="text-align: center;">Sim and Real Application</h2>
+  </div>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel1" class="carousel results-carousel">
+        <div class="item item-a">
+          <img id="a" src="./images/sim_1.gif" height="100%">
+        </div>
+        <div class="item item-b">
+          <img id="b" src="./images/sim_2.gif" height="100%">
+        </div>
+        <div class="item item-c">
+          <img id="c" src="./images/sim_3.gif" height="100%">
+        </div>
+        <div class="item item-d">
+          <img id="d" src="./images/sim_4.gif" height="100%">
+        </div>
+        <div class="item item-e">
+          <img id="d" src="./images/sim_5.gif" height="100%">
+        </div>
+        <div class="item item-f">
+          <img id="d" src="./images/sim_6.gif" height="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+      <div class="container">
+          <div class="three-item">
+            <div class="item">
+                <img src="./images/robot_1.gif" height="100%">
+            </div>
+            <div class="item">
+                <img src="./images/robot_2.gif" height="100%">
+            </div>
+            <div class="item">
+                <img src="./images/robot_3.gif" height="100%">
+            </div>
+            <div class="item">
+              <img src="./images/robot_4.gif" height="100%">
+            </div>
+            <div class="item">
+              <img src="./images/robot_5.gif" height="100%">
+            </div>
+          <div>
+      </div>
+  </div>
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-three-thirds">
+          <div class="content has-text-justified">
+            <br><br>
+            <span style="font-weight: bold;">[Animation Motion Tracking]</span>  
+            Being-M-0 allows motion retargeting to any animated character in the simulated world while adhering to physical laws.
+          </div>
+          <div class="content has-text-justified">
+            <span style="font-weight: bold;">[Robot Motion Tracking]</span>  
+                    More importantly, the generated motions can be retargeted to robots like Unitree H1, enabling them to perform human-like actions without pre-defined execution.
+                    In this work, we demonstrate simple robot demos (e.g., hanging in the air). 
+                    For more advanced motion tracking—where the robot follows human motions while adhering to physical laws (e.g., maintaining balance) --
+                    our latest project <a href="https://github.com/BeingBeyond/Jaeger/blob/main/xxx">Jaeger</a>.
+          </div>
+        </div>
+    </div>
+ </div> 
+</section>
 
 <section class="section">
   <div class="container">
@@ -363,19 +481,19 @@
                       <img id="a" src="./images/sim_1.gif"  height="100%">
                     </div>
                     <div class="item item-b">
-                      <img id="a" src="./images/sim_2.gif"  height="100%">
+                      <img id="b" src="./images/sim_2.gif"  height="100%">
                     </div>
                     <div class="item item-c">
-                      <img id="a" src="./images/sim_3.gif"  height="100%">
+                      <img id="c" src="./images/sim_3.gif"  height="100%">
                     </div>
-                    <div class="item item-d">
-                      <img id="a" src="./images/sim_4.gif"  height="100%">
+                    <div class="item item-a">
+                      <img id="d" src="./images/sim_4.gif"  height="100%">
                     </div>
-                    <div class="item item-e">
-                      <img id="a" src="./images/sim_5.gif"  height="100%">
+                    <div class="item item-b">
+                      <img id="e" src="./images/sim_5.gif"  height="100%">
                     </div>
-                    <div class="item item-e">
-                      <img id="a" src="./images/sim_6.gif"  height="100%">
+                    <div class="item item-c">
+                      <img id="f" src="./images/sim_6.gif"  height="100%">
                     </div>
                   </div>
                 </div>
@@ -390,22 +508,22 @@
                 <div class="container">
                   <div id="results-carousel1" class="carousel results-carousel">
                     <div class="item item-a">
-                      <img id="a" src="./images/robot_1.gif" height="100%">
+                      <img id="a" src="./images/robot_1.gif" height="60%">
                     </div>
                     <div class="item item-b">
-                      <img id="b" src="./images/robot_2.gif" height="100%">
+                      <img id="b" src="./images/robot_2.gif" height="60%">
                     </div>
                     <div class="item item-c">
-                      <img id="c" src="./images/robot_3.gif" height="100%">
+                      <img id="c" src="./images/robot_3.gif" height="60%">
                     </div>
                     <div class="item item-d">
-                      <img id="d" src="./images/robot_4.gif" height="100%">
+                      <img id="d" src="./images/robot_4.gif" height="60%">
                     </div>
                     <div class="item item-e">
-                      <img id="e" src="./images/robot_5.gif" height="100%">
+                      <img id="e" src="./images/robot_5.gif" height="60%">
                     </div>
                     <div class="item item-e">
-                      <img id="e" src="./images/robot_6.gif" height="100%">
+                      <img id="e" src="./images/robot_6.gif" height="60%">
                     </div>
                   </div>
                 </div>
@@ -426,133 +544,7 @@
 </section>
 
 
-<section class="section">
-  <div class="container">
-      <!-- Abstract. -->
-      <div class="columns is-centered has-text-centered">
-          <div class="column is-two-thirds">
-              <h2 class="title is-3 is-size-4-mobile"></h2>
-              <div class="content has-text-justified">
-                  <p>
-                       
-                  </p>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
 
-<section class="section">
-  <div class="container">
-      <div class="columns is-centered has-text-centered">
-          <div class="column is-three-thirds">
-              <h2 class="title is-3 is-size-4-mobile" style="text-align: center;">Dataset</h2>
-              <img src="./images/dataset_static.png" alt="vs fixedcam" style="width: 100%; height: auto;">
-              <br><br>
-              <h2>
-                  <div class="content has-text-justified">
-                      <span style="font-weight: bold;">[Comparison with existing human motion datasets]</span>  In the table, B, H, and F refer to body, hand, and face, respectively. “part” indicates that the
-                      text captions include fine-grained descriptions of body parts, while “body” means the descriptions
-                      are not as detailed. “multi” and “single” specify whether the dataset contains multi-person scenarios
-                      or only single-person data. Our MotionBase is the largest motion generation dataset and benchmark
-                      to date, featuring at least 15× more data than previous datasets, along with additional modalities.
-                  </div>
-              </h2>  
-              <br><br>  
-              <img src="./images/dataset_distribute.png" alt="vs fixedcam" style="width: 100%; height: auto;">
-              <h2>
-                <div class="content has-text-justified">
-                    <span style="font-weight: bold;">[Distribution of MotionBase]</span>  
-                    We present the scale (LEFT) and length (RIGHT) Distribution of motion sequences across subsets of MotionBase. 
-                    To be specific, MotionBase contains over 1 million motion sequences from 42 different public datasets and web
-                    videos on the Internet. Subsets of MotionX, including Animation, Perform, Dance, Aist, Kungfu, GRAB, 
-                    Music, Idea400, HAA500, Game Motion, and Fitness, are included in MotionBase. 
-                    Recognizing the high cost of collecting and annotating videos, we also see the untapped potential of images for motion understanding. 
-                    Consequently, MotionBase incorporates image data by repeating each image across 64 frames and treating it as a motion sequence.
-                    For the datasets with long-range videos, such as MPI-INF-3DHP, we segment the footage into sub-clips with 
-                    random durations ranging from 10 seconds to one minute.
-                </div>
-            </h2>  
-          </div>
-      </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container">
-      <!-- Abstract. -->
-      <div class="columns is-centered has-text-centered">
-          <div class="column is-two-thirds">
-              <h2 class="title is-3 is-size-4-mobile"></h2>
-              <div class="content has-text-justified">
-                  <p>
-                       
-                  </p>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
-
-  
-
-
-
-
-<section class="section">
-    <div class="container">
-        <div class="columns is-centered has-text-centered">
-            <div class="column is-three-thirds">
-                <h2 class="title is-3 is-size-4-mobile" style="text-align: center;">Experiments</h2>
-                <img src="./images/exp_scaling.png" alt="vs wo-connector" style="width: 100%; height: auto;">
-                <br><br>
-                <h2>
-                    <div class="content has-text-justified">
-                        <span style="font-weight: bold;">[Scaling of model size and dataset benefits motion generation]</span> 
-                        This table shows the comparisons under different model and data sizes. All experiments are conducted using
-                        the same pretrained VQ model for consistency. Additionally, we re-train the motion autoencoder
-                        and text encoder separately on the Motion-X and MotionBase datasets.
-                        Our results demonstrate that increasing both model size and data amount leads to significant performance improvements.
-                    </div>
-                </h2>
-                <br><br><br>
-                <img src="./images/exp_comparison.png" alt="vs wo-adjust" style="width: 100%; height: auto;">
-                <br><br>
-                <h2>
-                    <div class="content has-text-justified">
-                        <span style="font-weight: bold;">[Comparison with SoTA]</span> 
-                        We evaluate our large motion model on the widely adopted HumanML3D benchmark.
-                        We compare its performance against a variety of SoTA approaches. Our model, which utilizes Llama-2-13B as
-                        the decoder and calculates the loss over the entire concatenated sequence of input text, achieves SOTA performance. 
-                        Our large motion model significantly outperforms other LLM-based methods such as MotionGPT and AvatarGPT, as well as the earlier T2MGPT. 
-                       
-                    </div>
-                    <div class="content has-text-justified">
-                      <span style="font-weight: bold;">[Out-of-Domain evaluation]</span> 
-                      This ablation is essential for further validating the generalization capabilities of large motion models, 
-                      as the improvements may stem from the inclusion of additional in-domain data from Motion-X. 
-                      In this setup, we select four subsets from MotionBase, comprising 90K samples (UNSEEN-90K), for evaluation, while the remaining 38 subsets are used for training.
-                  </div>
-                    
-                </h2>    
-                <br><br><br>
-                <img src="./images/exp_vq.png" alt="vs fixedcam" style="width: 100%; height: auto;">
-                <br><br>
-                <h2>
-                    <div class="content has-text-justified">
-                        <span style="font-weight: bold;">[FID results on different motion quantization]</span> 
-                        We compare our proposed 2D lookup-free quantization (2D-LFQ) against two commonly used approaches: residual vector quantization (RVQ) and vector quantization (VQ).
-                        2D-LFQ demonstrates significant improvements over both RVQ and VQ. 
-                        Notably, as the codebook size increases, 2D-LFQ continues to enhance performance, 
-                        while RVQ and VQ experience diminishing returns or performance degradation with larger codebooks.
-                    </div>
-                </h2>    
-            </div>
-        </div>
-    </div>
-</section>
                 
 <section class="section">
     <div class="container">
@@ -561,17 +553,14 @@
                 <h2 class="title is-3 is-size-4-mobile" style="text-align: center;">Conclusion</h2>
                 <div class="content has-text-justified">
                     <p>
-                      In this paper, we explore how to advance the field of large-scale motion generation. To this end, we
-                      introduce a large-scale motion dataset named MotionBase, which includes detailed text descriptions
-                      and rich modality annotations, providing a strong foundation for effectively training large motion
-                      models. Our research highlights key findings, such as the impact of scaling both data and model size.
-                      Additionally, we identify potential limitations in the current evaluation metrics, particularly when
-                      assessing diverse and unseen motions. To enhances the benefits large motion models can derive from
-                      extensive motion data, we propose a novel motion quantization approach that treats motion clips as
-                      2D images and constructs a finite-scale codebook, eliminating the need for token lookups. We hope
-                      that this research offers valuable direction for future work in large-scale motion generation.
+                      In this paper, we explore how to advance the field of large motion model.
+                      To this end, we introduce MotionLib, the first million-level dataset comprising over 1.2 million motions with hierarchical texts. 
+                      Building on MotionLib, we present key insights into scaling up both data and model size for large-scale motion training. 
+                      Furthermore, we propose MotionBook, a novel motion encoding approach designed to maximize the benefits when trained on extensive motion data. 
+                      MotionBook incorporates compact yet lossless features to represent motion, and introduces a novel 2D-LFQ motion quantization method that treats 
+                      each motion sequence as a 2D image, constructing a finite-scale codebook that eliminates the need for token lookups. 
+                      Leveraging these advancements, we train Puppet, a large motion model that achieves SoTA results compared to current counterparts.
                     </p>
-  
                 </div>
             </div>
         </div>
