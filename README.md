@@ -23,7 +23,7 @@ We will release our code and part of our dataset soon.
 If you find our work useful, please consider citing us!
 ```
 @inproceedings{wang2025Scaling,
-title={Scaling Motion Generation Model with Million-Level Motion Benchmark},
+title={Scaling Motion Generation Models with Million-Level Human Motions},
 author={Wang, Ye and Zheng, Sipeng and Cao, Bin and Wei, Qianshan and Zeng, Weishuai and Jin, Qin and Lu, Zongqing},
 booktitle={International Conference on Machine Learning (ICML)},
 year={2025}
