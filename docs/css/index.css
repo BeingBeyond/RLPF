@@ -327,6 +327,53 @@ body {
   }
 }
 
+
+.six-item {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 改为 6 等分列 */
+  gap: 15px; /* 图片间距 */
+  margin: 0 auto;
+  max-width: 1600px; /* 增加整体宽度以容纳更多列 */
+}
+
+.six-item .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.six-item .item img {
+  width: 100%; /* 图片宽度填满容器 */
+  height: auto; /* 高度自适应 */
+  object-fit: cover;
+  border-radius: 6px; /* 可选：圆角效果 */
+  transition: transform 0.3s ease; /* 悬停动画 */
+}
+
+.six-item .item img:hover {
+  transform: scale(1.05); /* 悬停放大效果 */
+}
+
+/* 响应式调整 */
+@media (max-width: 1400px) {
+  .six-item {
+    grid-template-columns: repeat(4, 1fr); /* 大屏幕 4 列 */
+  }
+}
+
+@media (max-width: 1024px) {
+  .six-item {
+    grid-template-columns: repeat(3, 1fr); /* 中等屏幕 3 列 */
+  }
+}
+
+@media (max-width: 768px) {
+  .six-item {
+    grid-template-columns: repeat(2, 1fr); /* 小屏幕 2 列 */
+  }
+}
+
+
 .title.is-5 {
   text-align: justify;
   margin-left: 10%;
