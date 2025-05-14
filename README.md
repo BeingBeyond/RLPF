@@ -1,4 +1,4 @@
-# Scaling Motion Generation Model with Million-Level Motion Benchmark
+# Scaling Motion Generation Model with Million-Level Human Motions
 
 <div align="center">
 
