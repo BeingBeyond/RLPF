@@ -2,7 +2,6 @@
 
 <div align="center">
 [[Website]](https://beingbeyond.github.io/RLPF)
-[[arXiv]](https://arxiv.org/abs/2410.03311)
 
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
 [![GitHub license](https://img.shields.io/badge/MIT-blue)]()
@@ -11,20 +10,14 @@
 
 </div>
 
-
-We present MotionLib, the first million-level dataset for motion generation, which is at least 15× larger than existing counterparts and enriched with hierarchical text descriptions. Using MotionLib, we train a large motion model named Being-M0, demonstrating robust performance across a wide range of human activities, including unseen ones. More Visualization can be found on our [[Website]](https://beingbeyond.github.io/Being-M0).
-
+We propose \textbf{Reinforcement Learning from Physical Feedback (RLPF)}, a novel framework that integrates physics-aware motion evaluation with text-conditioned motion generation.  
+RLPF employs a motion tracking policy to assess feasibility in a physics simulator, generating rewards for fine-tuning the motion generator.
+This joint optimization ensures both physical plausibility and instruction alignment. 
+Furthermore, RLPF introduces an alignment verification module to preserve semantic fidelity to text instructions.
+Extensive experiments show that RLPF outperforms baseline methods in generating physically feasible motions, enabling successful deployment on real humanoid platforms.
+Our website is available at \url{[https://xxxxxxxxxxxx](https://beingbeyond.github.io/RLPF)}.
 
 ## Code
 We will release our code and part of our dataset soon.
 
-## Citation
-If you find our work useful, please consider citing us!
-```
-@inproceedings{wang2025scaling,
-title={Scaling Motion Generation Models with Million-Level Human Motions},
-author={Wang, Ye and Zheng, Sipeng and Cao, Bin and Wei, Qianshan and Zeng, Weishuai and Jin, Qin and Lu, Zongqing},
-booktitle={International Conference on Machine Learning (ICML)},
-year={2025}
-}
-```
+
