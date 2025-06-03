@@ -1,8 +1,7 @@
-# Scaling Motion Generation Model with Million-Level Human Motions
+# RL from Physical Feedback: Aligning Large Motion Models with Humanoid Whole-Body Control
 
 <div align="center">
-
-[[Website]](https://beingbeyond.github.io/Being-M0)
+[[Website]](https://beingbeyond.github.io/RLPF)
 [[arXiv]](https://arxiv.org/abs/2410.03311)
 
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
