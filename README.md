@@ -1,23 +1,30 @@
-# RL from Physical Feedback: Aligning Large Motion Models with Humanoid Whole-Body Control
+# RL from Physical Feedback: Aligning Large Motion Models with Humanoid Control
 
 <div align="center">
+
 [[Website]](https://beingbeyond.github.io/RLPF)
+[[arXiv]](https://arxiv.org/abs/xxxx.xxxxx)
 
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
 [![GitHub license](https://img.shields.io/badge/MIT-blue)]()
 
-![](docs/images/motionlib.png)
+![](docs/images/RLPF-Method.png)
 
 </div>
 
-We propose \textbf{Reinforcement Learning from Physical Feedback (RLPF)}, a novel framework that integrates physics-aware motion evaluation with text-conditioned motion generation.  
-RLPF employs a motion tracking policy to assess feasibility in a physics simulator, generating rewards for fine-tuning the motion generator.
-This joint optimization ensures both physical plausibility and instruction alignment. 
-Furthermore, RLPF introduces an alignment verification module to preserve semantic fidelity to text instructions.
-Extensive experiments show that RLPF outperforms baseline methods in generating physically feasible motions, enabling successful deployment on real humanoid platforms.
-Our website is available at \url{[https://xxxxxxxxxxxx](https://beingbeyond.github.io/RLPF)}.
+We propose **Reinforcement Learning from Physical Feedback (RLPF)**, a novel framework that integrates physics-aware motion evaluation with text-conditioned motion generation. RLPF employs a motion tracking policy to assess feasibility in a physics simulator, generating rewards for fine-tuning the motion generator. This joint optimization ensures both physical plausibility and instruction alignment. Furthermore, RLPF introduces an alignment verification module to preserve semantic fidelity to text instructions. Extensive experiments show that RLPF outperforms baseline methods in generating physically feasible motions, enabling successful deployment on real humanoid platforms. Videos can be found on our [[Website]](https://beingbeyond.github.io/RLPF).
 
 ## Code
 We will release our code and part of our dataset soon.
 
-
+## Citation
+If you find our work useful, please consider citing us!
+```
+@article{yue2025rl,
+title={RL from Physical Feedback: Aligning Large Motion Models with Humanoid Control},
+author={Junpeng Yue, Zepeng Wang, Yuxuan Wang, Weishuai Zeng, Jiangxing Wang,
+ Xinrun Xu, Yu Zhang, Sipeng Zheng, Ziluo Ding, Zongqing Lu},
+journal={arXiv preprint arXiv:xxxx.xxxxx},
+year={2025}
+}
+```
