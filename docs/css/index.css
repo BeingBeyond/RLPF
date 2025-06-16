@@ -394,3 +394,31 @@ code {
 }
 
 
+/* 添加到 ./css/index.css */
+
+.carousel .item {
+  padding: 0 10px; /* 控制轮播项之间的间距 */
+}
+
+.carousel .item figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* 让标题和图片垂直排列 */
+  align-items: center;    /* 水平居中 */
+}
+
+.carousel .item figcaption {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.75rem; /* 标题和图片之间的距离 */
+  min-height: 2.5em;      /* 确保标题区域高度一致，防止布局跳动 */
+  text-align: center;
+}
+
+.carousel .item img {
+  width: 100%;
+  height: auto; /* 高度自适应 */
+  object-fit: cover;
+  border-radius: 12px; /* 更圆润的边角 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 添加一点阴影，更有立体感 */
+}
