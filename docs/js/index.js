@@ -1,35 +1,78 @@
-// js/index.js
+window.HELP_IMPROVE_VIDEOJS = false;
 
-document.addEventListener('DOMContentLoaded', () => {
+var INTERP_BASE = "./static/interpolation/stacked";
+var NUM_INTERP_FRAMES = 240;
 
-  // ... 这里是您已有的其他JS代码，比如navbar的逻辑，请保留 ...
+var interp_images = [];
+function preloadInterpolationImages() {
+  for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
+    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
+    interp_images[i] = new Image();
+    interp_images[i].src = path;
+  }
+}
 
-  // 定义一个通用的轮播配置对象，避免代码重复
-  const carouselOptions = {
-    slidesToScroll: 1,
-    slidesToShow: 4,    // 在大屏幕上默认显示4个，这样滑动效果更明显
-    loop: true,
-    pagination: true,
-    navigation: true,
-    breakpoints: [{
-      changePoint: 1024, // 桌面和平板
-      slidesToShow: 3,
-      slidesToScroll: 1,
-    }, {
-      changePoint: 769, // 平板竖屏
-      slidesToShow: 2,
-      slidesToScroll: 1
-    }, {
-      changePoint: 480, // 手机
-      slidesToShow: 1,
-      slidesToScroll: 1
-    }]
-  };
+function setInterpolationImage(i) {
+  var image = interp_images[i];
+  image.ondragstart = function() { return false; };
+  image.oncontextmenu = function() { return false; };
+  $('#interpolation-image-wrapper').empty().append(image);
+}
 
-  // 初始化第一个轮播 (上排)
-  bulmaCarousel.attach('#carousel-row-1', carouselOptions);
 
-  // 初始化第二个轮播 (下排)
-  bulmaCarousel.attach('#carousel-row-2', carouselOptions);
+$(document).ready(function() {
+    // Check for click events on the navbar burger icon
+    $(".navbar-burger").click(function() {
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
 
-}); 
+    });
+
+    var options = {
+			slidesToScroll: 1,
+			slidesToShow: 3,
+			loop: true,
+			infinite: true,
+			autoplay: false,
+			autoplaySpeed: 3000,
+    }
+
+		// Initialize all div with carousel class
+    var carousels = bulmaCarousel.attach('.carousel', options);
+
+    // Loop on each carousel initialized
+    for(var i = 0; i < carousels.length; i++) {
+    	// Add listener to  event
+    	carousels[i].on('before:show', state => {
+    		console.log(state);
+    	});
+    }
+
+    // Access to bulmaCarousel instance of an element
+    var element = document.querySelector('#my-element');
+    if (element && element.bulmaCarousel) {
+    	// bulmaCarousel instance is available as element.bulmaCarousel
+    	element.bulmaCarousel.on('before-show', function(state) {
+    		console.log(state);
+    	});
+    }
+
+    /*var player = document.getElementById('interpolation-video');
+    player.addEventListener('loadedmetadata', function() {
+      $('#interpolation-slider').on('input', function(event) {
+        console.log(this.value, player.duration);
+        player.currentTime = player.duration / 100 * this.value;
+      })
+    }, false);*/
+    preloadInterpolationImages();
+
+    $('#interpolation-slider').on('input', function(event) {
+      setInterpolationImage(this.value);
+    });
+    setInterpolationImage(0);
+    $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
+
+    bulmaSlider.attach();
+
+})
